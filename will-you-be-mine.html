@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be Mine? ❤️</title>
+
+<style>
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 120px;
+}
+
+button {
+  padding: 12px 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yes {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background-color: #ddd;
+  position: absolute;
+  left: 140px;
+  top: 0;
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ff4d6d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Will you be mine? 💖</h1>
+
+  <div class="buttons">
+    <button id="yes">Yes 💘</button>
+    <button id="no">No 😒</button>
+  </div>
+
+  <div id="message"></div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const message = document.getElementById("message");
+
+let noTexts = [
+  "Hey 😳",
+  "Why though? 🥺",
+  "Think again 😜",
+  "Still no?? 😭",
+  "I’m heartbroken 💔",
+  "Okay now you’re just teasing 😤"
+];
+let count = 0;
+
+function moveNoButton() {
+  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  message.textContent = noTexts[count % noTexts.length];
+  count++;
+}
+
+// Desktop hover
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// Mobile touch
+noBtn.addEventListener("touchstart", moveNoButton);
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+      font-family:'Comic Sans MS',cursive;
+      text-align:center;
+      padding:20px;
+    ">
+      <h1 style="color:#ff4d6d;">
+        YAY!!! 💕💍<br><br>
+        I knew it 😘<br>
+        Happy Valentine’s Day 💖
+      </h1>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
